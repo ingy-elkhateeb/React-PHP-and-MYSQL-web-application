@@ -23,9 +23,9 @@ This project is an evaluation test for Scandiweb's junior developer vacancy. It'
 ## AutoQA Test
 I am thrilled to share that I successfully passed the Scandiweb Automation Test. The screenshots of the passed AutoQA are attached below. The test was a bit challenging due to the Automation bot's interaction with the application. In the product insertion, the Automation bot tested all product types simultaneously, while in human interaction, it's expected that only one product appears at a time, as specified in the project requirements. As a solution, I temporarily displayed the hidden elements of the other product types, and the Automation bot verified that all functions are correct, allowing me to pass the test.
 
-![Screenshot 1](/junior-developer-task/bot%20test-1.PNG)
-![Screenshot 2](/junior-developer-task/bot%20test-2.PNG)
-![Screenshot 2](/junior-developer-task/bot%20test-3.PNG)
+![Screenshot 1](junior-developer-task/bot%20test-1.PNG)
+![Screenshot 2](junior-developer-task/bot%20test-2.PNG)
+![Screenshot 3](junior-developer-task/bot%20test-3.PNG)
 
 ## Project Pages
 
