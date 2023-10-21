@@ -1,11 +1,4 @@
 <?php
-// header("Access-Control-Allow-Methods: POST, GET");
-// header("Access-Control-Allow-Origin: *");
-// header("Access-Control-Allow-Origin: https://testingscandi.000webhostapp.com");
-// header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-
-// header("Content-Type: application/json; charset=UTF-8");
-
 include('server.php');
 include_once('products.php'); 
 
@@ -50,7 +43,7 @@ class DVD extends AbstractProducts {
             $response = array('status' => 'valid');
             echo json_encode($response);
         } else {
-            $response = array('status' => 'invalid');
+            $response = array('status' => 'invalid', 'message' => 'Missing attributes');
             echo json_encode($response);
         }
     }

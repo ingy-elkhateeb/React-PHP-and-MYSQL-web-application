@@ -109,7 +109,6 @@ function AddProduct() {
 
     const submitBook = async (e) => {
         e.preventDefault();
-        console.log("submiting book now");
         try {
             const result = await axios.post("https://testingscandi.000webhostapp.com/Backend/Book.php", BookObject, config);
             
@@ -126,7 +125,6 @@ function AddProduct() {
 
     const submitFurniture = async (e) => {
         e.preventDefault();
-        console.log("submiting furniture now");
         try {
             const result = await axios.post("https://testingscandi.000webhostapp.com/Backend/Furniture.php", FurnitureObject, config);
           
@@ -156,22 +154,21 @@ function AddProduct() {
         {id:'Furniture', text:'Furniture'}
         
     ];
-    const handleSelectedOption =(e) =>{
-        console.log("to be set to selected option", e);
+    const handleSelectedOption =(e) => {
         setSelectedOption(e.target.value);
     }
-    console.log("selected option is ",selectedOption);
-
+   
     return (
         <>
             <form className="add-product font-link" id="product_form">
                 <div className="product-wrapper">
-                    <div className="row title-wrapper">
+                    <div className="row title-wrapper ">
                         <div className="col-md-12 text-center mx-4">
                             <h1>Add Product</h1>
                         </div>
                     </div>
-                    <div className="row w-50">
+                    <div className="row w-50 d-flex justify-content-center">
+                    <form action="">
                         <input
                             type="text"
                             name="Name"
@@ -181,9 +178,12 @@ function AddProduct() {
                             value={Name}
                             onChange={e => handleChange(e)}
                             required
+                            autoFocus
                         />
+                    </form>
                     </div>
-                    <div className="row w-50">
+                    <div className="row w-50 d-flex justify-content-center">
+                    <form>
                         <input
                             type="text"
                             name="SKU"
@@ -194,8 +194,10 @@ function AddProduct() {
                             onChange={e => handleChange(e)}
                             required
                         />
+                        </form>
                     </div>
-                    <div className="row w-50">
+                    <div className="row w-50 d-flex justify-content-center">
+                    <form action="">
                         <input
                             type="number"
                             name="Price"
@@ -205,18 +207,10 @@ function AddProduct() {
                             value={Price}
                             onChange={e => handleChange(e)}
                             required
+                            autoFocus
                         />
+                        </form>
                     </div>
-
-                    {/* <option id="DVD" value="DVD"  onClick={(e) => { toggleCard(e); }}>DVD</option>
-                        <option id="Furniture" value="Furniture"  onClick={(e) => { toggleCard(e) }}>Furniture</option>
-                        <option id="Book"  value="Book" onClick={(e) => { toggleCard(e); }}>Book</option> */}
-                        
-                        {/* {options.map((card)=>(
-                            <div key={card.id} style={{display: selectedOption === card.id ? 'block':'none'}}>
-                                <span>{card.text}</span>
-                            </div>
-                        ))} */}
 
                     <select className="mt-2" size='md' variant="dark" id="productType" title="Dropdown button" 
                     value={selectedOption} onChange={(e)=>handleSelectedOption(e)}>
@@ -227,13 +221,14 @@ function AddProduct() {
                             </option>
                         ))}  
                     </select>
+                    <button type="button" className="btn btn-add" name="Submit" value="cancel" onClick={e => history('/')}>Cancel</button>
 
-                    <div className={selectedOption === "DVD"}>
-                        <div id="form-dvd">
+                    <div className={selectedOption === "DVD"? `DVD` : "DVD d-none"}>
+                        <form id="form-dvd">
                             <div className="row">
                                 <div className="col-md-12">
                                     <div className="card">
-                                        <div className="card-body dvd-card">
+                                        <div className="card-body dvd-card">                                           
                                             <h5 className="card-title">DVD</h5>
                                             <input
                                                 type="number"
@@ -244,7 +239,8 @@ function AddProduct() {
                                                 value={size}
                                                 onChange={e => handleDVD(e)}
                                                 required
-                                            />
+                                                autoFocus
+                                            />                                         
                                             <div>
                                                 <input
                                                     type="text"
@@ -264,15 +260,15 @@ function AddProduct() {
                             <button type="button" className="btn btn-add " name="Submit" value="Add Product" onClick={(e) => submitDVD(e)}>Save</button>
                                 <button type="button" className="btn btn-add" name="Submit" value="cancel" onClick={e => history('/')}>Cancel</button>
                             </div>
-                        </div>
+                        </form>
                     </div>
-                    <div className={selectedOption === "Book"}>
-                        <div id="form-book">
+                    <div className={selectedOption === "Book"? `Book` : "Book d-none"}>
+                        <form id="form-book">
                             <div className="row">
                                 <div className="col-sm-12">
                                     <div className="card">
                                         <div className="card-body book-card">
-                                            <h5 className="card-title">Books</h5>
+                                            <h5 className="card-title">Books</h5>                                          
                                             <input
                                                 type="number"
                                                 name="Weight"
@@ -282,7 +278,8 @@ function AddProduct() {
                                                 value={Weight}
                                                 onChange={e => handleBook(e)}
                                                 required
-                                            />
+                                                autoFocus
+                                            />                                     
                                             <div>
                                                 <p className="card-text">Product Description</p>
                                                 <input
@@ -303,10 +300,10 @@ function AddProduct() {
                             <button type="button" className="btn btn-add " name="Submit" value="Add Product" onClick={(e) => submitBook(e)}>Save</button>
                                 <button type="button" className="btn btn-add" name="Submit" value="cancel" onClick={e => history('/')}>Cancel</button>
                             </div>
-                        </div>
+                        </form>
                     </div>
-                    <div className={selectedOption === "Furniture"}>
-                        <div id="form-furniture">
+                    <div className={selectedOption === "Furniture"? `Furniture` : "Furniture d-none"}>
+                        <form id="form-furniture">
                             <div className="row w-75">
                                 <div className="col-sm-12">
                                     <div className="card">
@@ -316,7 +313,7 @@ function AddProduct() {
                                             <div className="container">
                                                 <div className="row">
                                                 <div className="col">
-                                                        <p>Height</p>
+                                                        <p>Height</p>                                                    
                                                         <input
                                                             type="number"
                                                             name="Height"
@@ -325,11 +322,13 @@ function AddProduct() {
                                                             value={Furniture.Dimensions.Height}
                                                             onChange={e => handleFurniture(e)}
                                                             required
+                                                            autoFocus
                                                         />
                                                     </div>
                                                     
                                                     <div className="col">
                                                         <p>Width</p>
+                                                        <form>
                                                         <input
                                                             type="number"
                                                             name="Width"
@@ -338,11 +337,14 @@ function AddProduct() {
                                                             value={Furniture.Dimensions.Width}
                                                             onChange={e => handleFurniture(e)}
                                                             required
+                                                            autoFocus
                                                         />
+                                                        </form>
                                                     </div>
                                                   
                                                     <div className="col">
                                                         <p>Length</p>
+                                                        <form>
                                                         <input
                                                             type="number"
                                                             name="Length"
@@ -351,7 +353,9 @@ function AddProduct() {
                                                             value={Furniture.Dimensions.Length}
                                                             onChange={e => handleFurniture(e)}
                                                             required
+                                                            autoFocus
                                                         />
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -374,7 +378,7 @@ function AddProduct() {
                             <button type="button" onClick={(e) => submitFurniture(e)} className="btn btn-add " name="Submit" value="Add Product">Save</button>
                                 <button type="button" className="btn btn-add" name="Submit" value="cancel" onClick={e => history('/')}>Cancel</button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 

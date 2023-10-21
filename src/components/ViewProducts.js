@@ -12,9 +12,6 @@ function ViewProducts() {
   const loadProducts = async () => {
     try {
       const result = await axios.get("https://testingscandi.000webhostapp.com/Backend/ViewProducts.php");
-      console.log("data",result.data);
-      console.log("reecords",result.data.records);
-
       if (result.data.records) {
         setProduct(result.data.records);
       }
@@ -31,10 +28,8 @@ function ViewProducts() {
   };
 
   const deleteProducts = (id) => {
-    
+
     const checkID = Array.isArray(id) ? id : [id];
-    console.log("id is ", id);
-    console.log("array?", checkID);
     axios.post("https://testingscandi.000webhostapp.com/Backend/Delete.php", {
       action: "DELETE",
       product_id: checkID,
@@ -44,14 +39,13 @@ function ViewProducts() {
       },
     })
       .then((result) => {
-        console.log("Response from server:", result.data);
         loadProducts();
       })
       .catch(() => {
         alert("Error occurred while deleting product");
       });
 
-    
+
   }
 
   const handleCheckboxChange = (e, product) => {
@@ -65,7 +59,7 @@ function ViewProducts() {
     setProduct(updatedProducts);
   }
 
-  const deleteCustomersbyIDs = () => {
+  const deleteProductsbyIDs = () => {
     let selectedids = [];
     products.forEach((product) => {
       if (product.select) {
@@ -83,22 +77,22 @@ function ViewProducts() {
             <a className="navbar-brand" >
               Scandi
             </a>
-            
+
           </div>
           <div className="col">
             <div className="p-2">
-              
+
             </div>
           </div>
           <div className="col-6 d-inline-flex pr-0 d-flex flex-row-reverse">
-          
+
 
             <form className="form-inline px-2 my-2 my-lg-0 ">
               <button
                 className="btn mr-2 btn-sm px-2 ml-auto btn-delete"
                 type="submit"
                 onClick={() => {
-                  deleteCustomersbyIDs();
+                  deleteProductsbyIDs();
                 }}
               >
                 MASS DELETE
@@ -107,12 +101,6 @@ function ViewProducts() {
             <Link to="/add-product">
               <button className="btn btn-delete btn-sm px-2 font-weight-normal">ADD</button>
             </Link>
-
-            {/* <button className="btn btn-delete px-4 font-weight-normal pr-2" to="/add-product">ADD</button> */}
-            {/* <Link className="nav-link px-4 font-weight-normal pr-2" to="/add-product">
-                ADD
-              </Link> */}
-
           </div>
         </div>
       </nav>
@@ -127,16 +115,18 @@ function ViewProducts() {
           products.map((product) => (
             <div className="col-sm" key={product.product_id}>
               <div
-                className="card mb-3"
+                className="card mb-4"
                 style={{
                   minWidth: "15rem",
                   minHeight: "20rem",
                   boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
                   borderColor: "#FFBD18",
+                  alignItems: "center",
+                  textAlign: "center"
                 }}
               >
                 <div className="card-body text-center">
-                  <div className="mb-3">
+                  <div className="mb-4">
                     <input
                       className="form-check-input float-end delete-checkbox"
                       name={product.product_id}
@@ -167,7 +157,7 @@ function ViewProducts() {
                       }
                       return (
                         <div key={property} style={{ alignItems: "center", textAlign: "center" }}>
-                          <span style={{ color: "#555A5F", fontSize: "12px" }} className="property">
+                          <span style={{ color: "#555A5F", fontSize: "12px", textAlign: "center",alignItems: "center" }} className="property">
                             {property}
                           </span>{" "}
                           <br></br>

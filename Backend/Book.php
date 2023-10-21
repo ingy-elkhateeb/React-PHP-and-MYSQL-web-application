@@ -48,7 +48,7 @@ class Book extends AbstractProducts{
             $response = array('status' => 'valid');
             echo json_encode($response);
         } else {
-            $response = array('status' => 'invalid');
+            $response = array('status' => 'invalid', 'message' => 'Missing attributes');
             echo json_encode($response);
         }
     }
