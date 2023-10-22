@@ -49,6 +49,7 @@ I am thrilled to share that I successfully passed the Scandiweb Automation Test 
 ## Contact
 - Name: Ingy EL-Khateeb
 - Email: ingyelkhateeb@gmail.com
-- [LinkedIn](https://www.linkedin.com/in/ingy-el-khateeb/)
-- [GitHub](https://github.com/ingyelkhateeb)
+- Phone: +201111293285
+- [LinkedIn](https://www.linkedin.com/ingy-elkhateeb-391b30244)
+- [GitHub](https://github.com/ingy-elkhateeb)
 
