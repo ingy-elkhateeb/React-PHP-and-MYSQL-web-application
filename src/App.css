@@ -20,10 +20,14 @@
   background-color: #212529;
   color: #f8f9fa;
   border-radius: 0.25rem;
-  padding: 1%;
+  padding: 3%;
+  margin-right: 3%;
 }
 .nav-link:hover, .bi-trash {
   color: #FFBD18;
+}
+.form_control {
+  cursor: text;
 }
 .bi-pencil-square {
   color: #FFBD18;
@@ -41,8 +45,22 @@
   border-color: #FFBD18;
   color: #212529;
 }
-.btn-add:hover, #dropdown-basic-button:hover {
+.btn-add:hover {
   border-color: #212529;
+}
+#productType:hover {
+  border-color:  #212529;
+  background-color: transparent;
+  color: #212529;
+  transition: all 0.3s ease;
+}
+#productType option {
+  background: #212529; 
+  color: #f8f9fa; 
+}
+option:checked, option:hover {
+  background: #272b30; 
+  color: #fff; 
 }
 #form-dvd, #form-furniture, #form-book {
   display: flex;
@@ -104,4 +122,6 @@ input {
 .navbar{
   width: 100%;
 }
-
+.dvd-card, .book-card, .furniture-card {
+  padding-right: 3%;
+}

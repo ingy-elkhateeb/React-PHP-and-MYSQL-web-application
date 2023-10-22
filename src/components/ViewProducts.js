@@ -126,17 +126,19 @@ function ViewProducts() {
                 }}
               >
                 <div className="card-body text-center">
-                  <div className="mb-4">
-                    <input
-                      className="form-check-input float-end delete-checkbox"
-                      name={product.product_id}
-                      type="checkbox"
-                      id="checkboxNoLabel"
-                      checked={product.select || false}
-                      value={product.product_id}
-                      aria-label="..."
-                      onChange={(e) => handleCheckboxChange(e, product)}
-                    />
+                  <div className="d-flex flex-column-reverse">
+                    <div>
+                      <input
+                        className="form-check-input float-end delete-checkbox"
+                        name={product.product_id}
+                        type="checkbox"
+                        id="checkboxNoLabel"
+                        checked={product.select || false}
+                        value={product.product_id}
+                        aria-label="..."
+                        onChange={(e) => handleCheckboxChange(e, product)}
+                      />
+                    </div>
                   </div>
                   {Object.keys(product).map((property) => {
                     if (property !== "product_id") {
@@ -157,7 +159,7 @@ function ViewProducts() {
                       }
                       return (
                         <div key={property} style={{ alignItems: "center", textAlign: "center" }}>
-                          <span style={{ color: "#555A5F", fontSize: "12px", textAlign: "center",alignItems: "center" }} className="property">
+                          <span style={{ color: "#555A5F", fontSize: "12px", textAlign: "center", alignItems: "center" }} className="property">
                             {property}
                           </span>{" "}
                           <br></br>
