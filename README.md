@@ -33,7 +33,7 @@ I am thrilled to share that I successfully passed the Scandiweb Automation Test 
 <br>
 
 ### Add Products Screen with no option selected
-![Screenshot 5](/intial-add-products-page.PNG)
+![Screenshot 5](/intial-add-product-page.PNG)
 <br>
 
 ### Add DVD product
@@ -43,7 +43,7 @@ I am thrilled to share that I successfully passed the Scandiweb Automation Test 
 ![Screenshot 7](/add-book-product.PNG)
 <br>
 ### Add Furniture product
-![Screenshot 8](/add-funriture-product.PNG)
+![Screenshot 8](/add-furniture-product.PNG)
 
 
 ## Contact
