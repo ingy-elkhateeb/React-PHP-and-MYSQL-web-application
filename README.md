@@ -26,7 +26,24 @@ I am thrilled to share that I successfully passed the Scandiweb Automation Test 
 ![Screenshot 2](/bot%20test-2.PNG)
 ![Screenshot 3](/bot%20test-3.PNG)
 
-## Project Pages
+## Project Screens
+
+### View Products Screen
+![Screenshot 4](/view-products-page.PNG)
+<br>
+
+### Add Products Screen with no option selected
+![Screenshot 5](/intial-add-products-page.PNG)
+<br>
+
+### Add DVD product
+![Screenshot 6](/add-dvd-product.PNG)
+<br>
+### Add Book product
+![Screenshot 7](/add-book-product.PNG)
+<br>
+### Add Furniture product
+![Screenshot 8](/add-funriture-product.PNG)
 
 
 ## Contact
