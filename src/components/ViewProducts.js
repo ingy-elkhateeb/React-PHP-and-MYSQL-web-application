@@ -144,8 +144,8 @@ function ViewProducts() {
                     if (property !== "product_id") {
                       if (property === "Dimensions" && typeof product[property] === "object") {
                         return (
-                          <div key={property}>
-                            <p style={{ color: "#555A5F", fontSize: "12px" }}> Dimensions L x W x H cm</p>
+                          <div key={property} style={{ margin: "0", padding: "0" }}>
+                            <p style={{ color: "#555A5F", fontSize: "12px", marginBottom: "0px"}}> Dimensions L x W x H cm</p>
                             {Object.keys(product[property]).map((nested, index) => (
                               <div key={nested} style={{ display: "inline-flex" }}>
                                 <div style={{ color: "#3B424A", fontSize: "20px" }}>{product[property][nested]}</div>

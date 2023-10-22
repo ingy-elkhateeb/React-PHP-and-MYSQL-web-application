@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Dropdown, DropdownButton } from 'react-bootstrap';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function AddProduct() {
     let history = useNavigate();
@@ -86,44 +87,59 @@ function AddProduct() {
 
     const submitDVD = async (e) => {
         e.preventDefault();
+        
+        if (product.Name.trim().length < 1 || product.SKU.trim().length < 1 || DVD.size.trim().length < 1 || DVD.DVD_description.trim().length < 1) {
+            toast.error("Please fill in all required fields.");
+            return;
+        }
         try {
             const result = await axios.post("https://testingscandi.000webhostapp.com/Backend/DVD.php", DVDObject, config);
             if (result.data.status === 'valid') {
                 history('/');
             } else {
-                alert("Error occurred while adding the product");
+                toast.error("Error occurred while adding the product");
             }
         } catch (error) {
-            console.error("Error:", error);
-            alert("Error occurred while making the request");
+            toast.error("Error:", error);
+            toast.error("Error occurred while making the request");
             if (error.response) {
-                console.error('Server Error:', error.response);
+                toast.error('Server Error:', error.response);
             } else if (error.request) {
-                console.error('No Response:', error.request);
+                toast.error('No Response:', error.request);
             } else {
-                console.error('Error:', error.message);
+                toast.error('Error:', error.message);
             }
         }
     }
 
     const submitBook = async (e) => {
         e.preventDefault();
+
+        if (product.Name.trim().length < 1 || product.SKU.trim().length < 1 || Book.Weight.trim().length < 1 || Book.Book_description.trim().length < 1) {
+            toast.error("Please fill in all required fields.");
+            return;
+        }
         try {
             const result = await axios.post("https://testingscandi.000webhostapp.com/Backend/Book.php", BookObject, config);
 
             if (result.data.status === 'valid') {
                 history('/');
             } else {
-                alert(result.data.message || "Error occurred while adding the product");
+                toast.error(result.data.message || "Error occurred while adding the product");
             }
         } catch (error) {
-            console.error("Error:", error);
-            alert("Error occurred while making the request");
+            toast.error("Error:", error);
+            toast.error("Error occurred while making the request");
         }
     }
 
     const submitFurniture = async (e) => {
         e.preventDefault();
+       
+        if (product.Name.trim().length < 1 || product.SKU.trim().length < 1 || Furniture.Dimensions.Length.trim().length < 1 || Furniture.Dimensions.Width.trim().length < 1 || Furniture.Dimensions.Height.trim().length < 1 || Furniture.Furniture_description.trim().length < 1) {
+            toast.error("Please fill in all required fields.");
+            return;
+        }
         try {
             const result = await axios.post("https://testingscandi.000webhostapp.com/Backend/Furniture.php", FurnitureObject, config);
 
@@ -131,17 +147,17 @@ function AddProduct() {
                 history('/');
             } else {
                 const errorMessage = result.data.message || "Error occurred while adding the product";
-                alert(errorMessage);
+                toast.error(errorMessage);
             }
         } catch (error) {
-            console.error("Error:", error);
-            alert("Error occurred while making the request");
+            toast.error("Error:", error);
+            toast.error("Error occurred while making the request");
             if (error.response) {
-                console.error('Server Error:', error.response);
+                toast.error('Server Error:', error.response);
             } else if (error.request) {
-                console.error('No Response:', error.request);
+                toast.error('No Response:', error.request);
             } else {
-                console.error('Error:', error.message);
+                toast.error('Error:', error.message);
             }
         }
     }
@@ -159,6 +175,7 @@ function AddProduct() {
 
     return (
         <>
+            <ToastContainer position="top-right" autoClose={3000} />
             <form className="add-product font-link" id="product_form">
                 <div className="product-wrapper">
                     <div className="row title-wrapper ">
@@ -167,54 +184,48 @@ function AddProduct() {
                         </div>
                     </div>
                     <div className="row w-50 d-flex justify-content-center text-center">
-                        <div className="col-md-12">
-                            <form action="">
+                        <div className="col-md-12">                          
                                 <input
                                     type="text"
                                     name="Name"
                                     id="name"
-                                    className="form_control"
+                                    className="form_control w-100"
                                     placeholder="Product Name *"
                                     value={Name}
                                     onChange={e => handleChange(e)}
                                     required
                                     autoFocus
-                                />
-                            </form>
+                                />                         
                         </div>
                     </div>
                     <div className="row w-50 d-flex justify-content-center text-center">
-                        <div className="col-md-12">
-                            <form>
+                        <div className="col-md-12">                         
                                 <input
                                     type="text"
                                     name="SKU"
                                     id="sku"
-                                    className="form_control"
+                                    className="form_control w-100"
                                     placeholder="Product SKU *"
                                     value={SKU}
                                     onChange={e => handleChange(e)}
                                     required
-                                />
-                            </form>
+                                />                         
                         </div>
                     </div>
                     <div className="row w-50 d-flex justify-content-center text-center">
-                        <div className="col-md-12">
-                            <form action="">
+                        <div className="col-md-12">                         
                                 <input
                                     type="number"
                                     name="Price"
                                     id="price"
                                     min="0"
-                                    className="form_control"
+                                    className="form_control w-100"
                                     placeholder="Product Price *"
                                     value={Price}
                                     onChange={e => handleChange(e)}
                                     required
                                     autoFocus
-                                />
-                            </form>
+                                />                       
                         </div>
                     </div>
                     <div className="d-flex justify-content-between align-items-center">
@@ -256,7 +267,7 @@ function AddProduct() {
                                                     type="text"
                                                     name="DVD_description"
                                                     className="form_control dvd-card w-75"
-                                                    placeholder="DVD Description"
+                                                    placeholder="DVD Description *"
                                                     value={DVD_description}
                                                     onChange={e => handleDVD(e)}
                                                     required
@@ -267,7 +278,7 @@ function AddProduct() {
                                 </div>
                             </div>
                             <div style={{ display: 'flex' }}>
-                                <button type="button" className="btn btn-add mt-2" name="Submit" value="Add Product" onClick={(e) => submitDVD(e)}>Save</button>
+                                <button type="button" onClick={(e) => submitDVD(e)} className="btn btn-add mt-2" name="Submit" value="Add Product">Save</button>
 
                             </div>
                         </form>
@@ -297,7 +308,7 @@ function AddProduct() {
                                                     type="text"
                                                     name="Book_description"
                                                     className="form_control book-card w-75"
-                                                    placeholder="Book Description "
+                                                    placeholder="Book Description *"
                                                     value={Book_description}
                                                     onChange={e => handleBook(e)}
 
@@ -308,7 +319,7 @@ function AddProduct() {
                                 </div>
                             </div>
                             <div style={{ display: 'flex' }}>
-                                <button type="button" className="btn btn-add mt-2" name="Submit" value="Add Product" onClick={(e) => submitBook(e)}>Save</button>
+                                <button type="button" onClick={(e) => submitBook(e)} className="btn btn-add mt-2" name="Submit" value="Add Product">Save</button>
 
                             </div>
                         </form>
@@ -320,17 +331,17 @@ function AddProduct() {
                                     <div className="card">
                                         <div className="card-body furniture-card">
                                             <h5 className="card-title">Furniture</h5>
-                                            <p className="card-text">Product Dimensions 'cm'</p>
+                                            <p className="card-text">Product Dimensions in cm</p>
                                             <div className="container">
                                                 <div className="row">
                                                     <div className="col">
-                                                        <p>Height</p>
+                                                        <p>Height *</p>
                                                         <input
                                                             type="number"
                                                             name="Height"
                                                             id="height"
                                                             min="0"
-                                                            className="form_control w-50"
+                                                            className="form_control w-75"
                                                             value={Furniture.Dimensions.Height}
                                                             onChange={e => handleFurniture(e)}
                                                             required
@@ -339,13 +350,13 @@ function AddProduct() {
                                                     </div>
 
                                                     <div className="col">
-                                                        <p>Width</p>
+                                                        <p>Width *</p>
                                                         <form>
                                                             <input
                                                                 type="number"
                                                                 name="Width"
                                                                 id="width"
-                                                                className="form_control w-50"
+                                                                className="form_control w-75"
                                                                 min="0"
                                                                 value={Furniture.Dimensions.Width}
                                                                 onChange={e => handleFurniture(e)}
@@ -356,14 +367,14 @@ function AddProduct() {
                                                     </div>
 
                                                     <div className="col">
-                                                        <p>Length</p>
+                                                        <p>Length *</p>
                                                         <form>
                                                             <input
                                                                 type="number"
                                                                 name="Length"
                                                                 id="length"
                                                                 min="0"
-                                                                className="form_control w-50"
+                                                                className="form_control w-75"
                                                                 value={Furniture.Dimensions.Length}
                                                                 onChange={e => handleFurniture(e)}
                                                                 required
@@ -377,7 +388,7 @@ function AddProduct() {
                                                 <input
                                                     type="text"
                                                     name="Furniture_description"
-                                                    placeholder="Furniture Description"
+                                                    placeholder="Furniture Description *"
                                                     className="form_control furniture-card"
                                                     value={Furniture.Furniture_description}
                                                     onChange={e => handleFurniture(e)}
